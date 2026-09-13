@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        rg.linearVelocity = MovementInput * moveSpeed * Time.fixedDeltaTime;
+        rg.linearVelocity = MovementInput * moveSpeed;
     }
 
     public void OnMove(InputAction.CallbackContext context)
