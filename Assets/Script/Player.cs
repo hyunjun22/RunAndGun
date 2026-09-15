@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
+
     }
 
     void FixedUpdate()
