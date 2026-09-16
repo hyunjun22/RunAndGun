@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject zombiePrefab; // 좀비 프리팹을 연결할 변수
+    [SerializeField] private ZombiePool zombiePool; // 오브젝트 풀링을 위한 ZombiePool 참조
     [SerializeField] private Transform[] spawnPoints; // 좀비가 생성될 위치를 지정할 배열
     [SerializeField] private float spawnInterval = 3f; // 좀비 생성 간격
 
+
+
     void Start()
     {
+        if (zombiePool == null)
+            zombiePool = GetComponent<ZombiePool>(); // ZombiePool 컴포넌트를 가져옴
+
         InvokeRepeating(nameof(SpawnZombie), 1f, spawnInterval);
     }
 
@@ -16,6 +21,12 @@ public class ZombieSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, spawnPoints.Length); // 랜덤한 인덱스를 생성
         Transform spawnPoint = spawnPoints[randomIndex]; // 랜덤한 위치를 선택
 
-        Instantiate(zombiePrefab, spawnPoint.position, Quaternion.identity); // 좀비 생성
+        GameObject zombie = zombiePool.GetZombie(); // 오브젝트 풀에서 좀비를 가져옴
+
+        if (zombie != null)
+        {
+            zombie.transform.position = spawnPoint.position; // 좀비의 위치를 설정
+            zombie.SetActive(true); // 좀비를 활성화
+        }
     }
 }

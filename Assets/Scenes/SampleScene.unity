@@ -14247,6 +14247,7 @@ GameObject:
   m_Component:
   - component: {fileID: 533062048}
   - component: {fileID: 533062049}
+  - component: {fileID: 533062050}
   m_Layer: 0
   m_Name: SpawnPoints
   m_TagString: Untagged
@@ -14289,7 +14290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfc472b4d6adc54b8541175d168b4d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ZombieSpawner
-  zombiePrefab: {fileID: 1712450027355858754, guid: 1b2931e833fde004783e8aff0cf5aa64, type: 3}
+  zombiePool: {fileID: 0}
   spawnPoints:
   - {fileID: 1376651933}
   - {fileID: 584265990}
@@ -14300,6 +14301,20 @@ MonoBehaviour:
   - {fileID: 1934191660}
   - {fileID: 699809307}
   spawnInterval: 3
+--- !u!114 &533062050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 533062047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8cafd4458cc354d89870be26c68f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombiePool
+  zombiePrefab: {fileID: 1712450027355858754, guid: 1b2931e833fde004783e8aff0cf5aa64, type: 3}
+  poolSize: 20
 --- !u!1 &584265989
 GameObject:
   m_ObjectHideFlags: 0
@@ -15579,7 +15594,7 @@ Tilemap:
       - {fileID: -2367147373253303548, guid: b4bbf339dea0cbb428b77016b89d4a5d, type: 3}
       - {fileID: -3397307686256540517, guid: b4bbf339dea0cbb428b77016b89d4a5d, type: 3}
       - {fileID: -2266587486849628351, guid: b4bbf339dea0cbb428b77016b89d4a5d, type: 3}
-      m_AnimationSpeed: 3.0000002
+      m_AnimationSpeed: 3
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
