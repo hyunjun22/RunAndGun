@@ -7,7 +7,7 @@ public class ZombiePool : MonoBehaviour
     [SerializeField] GameObject zombiePrefab;
     [SerializeField] int poolSize = 20;
 
-    List<GameObject> zombiePool = new List<GameObject>();
+    List<GameObject> zombiePoolList = new List<GameObject>();
 
     void Start()
     {
@@ -15,20 +15,20 @@ public class ZombiePool : MonoBehaviour
         {
             GameObject zombie = Instantiate(zombiePrefab);
             zombie.SetActive(false);
-            zombiePool.Add(zombie);
+            zombiePoolList.Add(zombie);
         }
     }
 
     public GameObject GetZombie()
     {
-        foreach (GameObject zombie in zombiePool)
+        foreach (GameObject zombie in zombiePoolList)
         {
             if (!zombie.activeInHierarchy)
             {
                 return zombie;
             }
         }
-        
+
         return null;
     }
 }
