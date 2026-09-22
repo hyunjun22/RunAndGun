@@ -3,8 +3,8 @@ using UnityEngine.InputSystem;
 
 public class Gun : MonoBehaviour
 {
+    [SerializeField] ObjectPoolingManager ObjPoolManager;
     [SerializeField] Transform Muzzle;
-    [SerializeField] GameObject bulletPrefab;
     [SerializeField] float bulletSpeed = 10f;
 
     void Update()
@@ -45,7 +45,11 @@ public class Gun : MonoBehaviour
         mouseWorldPosition.z = 0f;
 
         Vector2 direction = (mouseWorldPosition - transform.position).normalized;
-        GameObject bullet = Instantiate(bulletPrefab, Muzzle.position, Muzzle.rotation);
+        GameObject bullet = ObjPoolManager.GetBullet();
+        bullet.transform.position = Muzzle.position;
+        bullet.transform.rotation = Muzzle.rotation;
+        bullet.SetActive(true);
+
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
         bulletRb.linearVelocity = direction * bulletSpeed;
     }

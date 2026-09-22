@@ -1,13 +1,17 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Jobs;
 
 public class Zombie : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2f;
     [SerializeField] private float maxHealth = 100f;
     [SerializeField] private float hitStopTime = 0.2f;
+    [SerializeField] private float attackDamage = 10f;
+    [SerializeField] private float attackCooldown = 1f;
 
     float currentHealth;
+    float lastAttackTime;
     
     Transform playerTransform;
     Rigidbody2D rb;
@@ -90,5 +94,25 @@ public class Zombie : MonoBehaviour
     {
         // 사망 시 비활성화
         gameObject.SetActive(false);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        // 플레이어인 경우만 허용
+        if (!collision.gameObject.CompareTag("Player"))
+            return;
+
+        // 공격 쿨타임
+        if (Time.time < lastAttackTime + attackCooldown)
+            return;
+
+        Player playerCS = collision.gameObject.GetComponent<Player>();
+
+        if(playerCS != null)
+        {
+            playerCS.TakeDamage(attackDamage);
+
+            lastAttackTime = Time.time;
+        }
     }
 }
