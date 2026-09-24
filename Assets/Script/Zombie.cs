@@ -92,6 +92,8 @@ public class Zombie : MonoBehaviour
 
     void Die()
     {
+        GameManager.Instance.AddScore(1); // 점수 증가
+
         // 사망 시 비활성화
         gameObject.SetActive(false);
     }
