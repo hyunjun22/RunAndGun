@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Unity.Jobs;
+using UnityEngine.UI;
 
 public class Zombie : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Zombie : MonoBehaviour
     [SerializeField] private float hitStopTime = 0.2f;
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackCooldown = 1f;
+
+    [SerializeField] private Slider healthBar; // 체력바 UI
 
     float currentHealth;
     float lastAttackTime;
@@ -39,13 +42,7 @@ public class Zombie : MonoBehaviour
         spriteRenderer.color = originalColor;
         isHit = false;
 
-        // Debug.Log("I am spawned but isHit is " + isHit);
-    }
-
-    // 오브젝트가 비활성화 될 때
-    void OnDisable()
-    {
-        StopAllCoroutines();
+        UpdateHealthBar(); // 체력바 업데이트
     }
 
     void FixedUpdate()
@@ -66,6 +63,8 @@ public class Zombie : MonoBehaviour
     public void takeDamage(float damage)
     {
         currentHealth -= damage;
+
+        UpdateHealthBar(); // 체력바 업데이트
 
         StartCoroutine(HitEffect());
 
@@ -115,6 +114,23 @@ public class Zombie : MonoBehaviour
             playerCS.TakeDamage(attackDamage);
 
             lastAttackTime = Time.time;
+        }
+    }
+
+    void UpdateHealthBar()
+    {
+        if(currentHealth == maxHealth)
+        {
+            healthBar.gameObject.SetActive(false); // 체력바 비활성화
+        }
+        else
+        {
+            healthBar.gameObject.SetActive(true); // 체력바 활성화
+        }
+
+        if (healthBar != null)
+        {
+            healthBar.value = currentHealth / maxHealth; // 체력 비율 계산
         }
     }
 }
