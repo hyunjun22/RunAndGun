@@ -1,12 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float moveSpeed = 5f;
     [SerializeField] float changeColorDelay = 0.1f;
+
+    [SerializeField] private Slider healthBar; // ì²´ë ¥ë°” UI
 
     private Vector2 MovementInput;
     private Rigidbody2D rg;
@@ -40,13 +43,14 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        // InputSystem°ú ¿¬°áµÈ ÇÔ¼ö, WASD·Î ¿òÁ÷ÀÓ
         MovementInput = context.ReadValue<Vector2>();
     }
 
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+
+        UpdateHealthBar();
 
         StartCoroutine(HitEffect());
 
@@ -68,6 +72,14 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(changeColorDelay);
 
         spriteRenderer.color = originalColor;
+    }
+
+    void UpdateHealthBar()
+    {
+        if (healthBar != null)
+        {
+            healthBar.value = currentHealth / maxHealth;
+        }
     }
 
 }

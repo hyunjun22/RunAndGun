@@ -15295,6 +15295,7 @@ MonoBehaviour:
   maxHealth: 100
   moveSpeed: 10
   changeColorDelay: 0.1
+  healthBar: {fileID: 505524203}
 --- !u!70 &1118471698
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

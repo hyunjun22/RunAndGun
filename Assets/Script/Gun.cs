@@ -9,6 +9,8 @@ public class Gun : MonoBehaviour
 
     void Update()
     {
+        if(Time.timeScale == 0) return;
+
         GunRotation();
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
