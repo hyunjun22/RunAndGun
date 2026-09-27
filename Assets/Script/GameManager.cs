@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TMP_Text timeText;
     [SerializeField] TMP_Text scoreText;
     [SerializeField] GameObject pausePanel;
+    [SerializeField] GameObject gameOverText;
 
 
     float gameTime = 0f;
@@ -94,5 +96,23 @@ public class GameManager : MonoBehaviour
         {
             ClickPauseButton();
         }
+    }
+
+    public void GameOver()
+    {
+        gameOverText.SetActive(true);
+        Time.timeScale = 0f; // 게임 오버 시 게임 일시정지
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f; // 게임 재시작 시 시간 스케일을 원래대로
+        // UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

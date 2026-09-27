@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
 
     void Die()
     {
+        GameManager.Instance.GameOver();
+        
         gameObject.SetActive(false);
     }
 
