@@ -15495,6 +15495,7 @@ GameObject:
   - component: {fileID: 1118471699}
   - component: {fileID: 1118471698}
   - component: {fileID: 1118471697}
+  - component: {fileID: 1118471704}
   - component: {fileID: 1118471696}
   - component: {fileID: 1118471703}
   - component: {fileID: 1118471702}
@@ -15563,10 +15564,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27398084fcfca4340bcb31939cb312ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  maxHealth: 100
-  moveSpeed: 10
+  playerUI: {fileID: 0}
+  playerStats: {fileID: 1118471704}
   changeColorDelay: 0.1
-  healthBar: {fileID: 505524203}
 --- !u!70 &1118471698
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -15829,6 +15829,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e3dbf699c26e3c42a54572a0a6e9d6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AimLine
+--- !u!114 &1118471704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118471695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ca99563b80af64b8f3c5a43a70c378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  maxHealth: 100
+  currentHealth: 100
+  moveSpeed: 5
+  damage: 10
+  attackSpeed: 1
+  bulletSpeed: 10
 --- !u!1 &1143351346
 GameObject:
   m_ObjectHideFlags: 0
@@ -17358,7 +17376,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Gun
   ObjPoolManager: {fileID: 1485743993}
   Muzzle: {fileID: 1618285013}
-  bulletSpeed: 10
+  playerStats: {fileID: 1118471704}
 --- !u!1 &1608817753
 GameObject:
   m_ObjectHideFlags: 0
@@ -17369,6 +17387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1608817755}
   - component: {fileID: 1608817754}
+  - component: {fileID: 1608817756}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17407,6 +17426,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1608817756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608817753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 874c16668a6369f46869ac1d1043e7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUI
+  player: {fileID: 1118471697}
+  healthBar: {fileID: 0}
 --- !u!1 &1618285012
 GameObject:
   m_ObjectHideFlags: 0

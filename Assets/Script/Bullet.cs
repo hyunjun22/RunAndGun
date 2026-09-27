@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] float damage = 20f;
+    [SerializeField] float damage;
     [SerializeField] float maxDistance = 20f;
 
     Vector3 startPosition;
@@ -10,6 +10,12 @@ public class Bullet : MonoBehaviour
     void OnEnable()
     {
         startPosition = transform.position;
+    }
+
+    // Gun 스크립트에서 쏠 때 데미지를 설정해줄 것
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
     }
 
     void Update()

@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float maxHealth = 100f;
-    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] PlayerUI playerUI;
+    [SerializeField] PlayerStats playerStats;
+
     [SerializeField] float changeColorDelay = 0.1f;
 
-    [SerializeField] private Slider healthBar; // 체력바 UI
 
     private Vector2 MovementInput;
     private Rigidbody2D rg;
     private SpriteRenderer spriteRenderer;
 
-    float currentHealth;
     Color originalColor;
 
     void Awake()
@@ -27,7 +26,8 @@ public class Player : MonoBehaviour
 
     void OnEnable()
     {
-        currentHealth = maxHealth;
+        playerStats.RestartHealth();
+        playerUI.UpdateHealthBar();
     }
 
     void FixedUpdate()
@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     void Move()
     {
-        rg.linearVelocity = MovementInput * moveSpeed;
+        rg.linearVelocity = MovementInput * playerStats.MoveSpeed;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -48,13 +48,12 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;
-
-        UpdateHealthBar();
+        playerStats.TakeDamage(damage);
+        playerUI.UpdateHealthBar();
 
         StartCoroutine(HitEffect());
 
-        if(currentHealth <= 0)
+        if(playerStats.CurrentHealth <= 0)
         {
             Die();
         }
@@ -76,12 +75,6 @@ public class Player : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    void UpdateHealthBar()
-    {
-        if (healthBar != null)
-        {
-            healthBar.value = currentHealth / maxHealth;
-        }
-    }
+    
 
 }
