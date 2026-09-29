@@ -15411,7 +15411,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &759619289
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15446,7 +15446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.627451}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -15751,6 +15751,7 @@ GameObject:
   - component: {fileID: 995934360}
   - component: {fileID: 995934362}
   - component: {fileID: 995934361}
+  - component: {fileID: 995934363}
   m_Layer: 5
   m_Name: MovementSpeed
   m_TagString: Untagged
@@ -15878,6 +15879,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995934359}
   m_CullTransparentMesh: 1
+--- !u!114 &995934363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995934359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981427ee8eccdc14c9abb297f0c61a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipTrigger
+  tooltipUI: {fileID: 1608817757}
+  description: Movement Speed
+  tooltipSize: {x: 200, y: 80}
 --- !u!1 &1007045959
 GameObject:
   m_ObjectHideFlags: 0
@@ -16919,6 +16935,7 @@ GameObject:
   - component: {fileID: 1393513844}
   - component: {fileID: 1393513846}
   - component: {fileID: 1393513845}
+  - component: {fileID: 1393513847}
   m_Layer: 5
   m_Name: AttackSpeed
   m_TagString: Untagged
@@ -17046,6 +17063,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393513843}
   m_CullTransparentMesh: 1
+--- !u!114 &1393513847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393513843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981427ee8eccdc14c9abb297f0c61a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipTrigger
+  tooltipUI: {fileID: 1608817757}
+  description: AttackSpeed
+  tooltipSize: {x: 200, y: 80}
 --- !u!1 &1409073723
 GameObject:
   m_ObjectHideFlags: 0
@@ -17957,6 +17989,7 @@ GameObject:
   - component: {fileID: 1608817755}
   - component: {fileID: 1608817754}
   - component: {fileID: 1608817756}
+  - component: {fileID: 1608817757}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -18014,6 +18047,20 @@ MonoBehaviour:
   attackSpeedText: {fileID: 1393513845}
   movementSpeedText: {fileID: 995934361}
   healthText: {fileID: 985625845}
+--- !u!114 &1608817757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608817753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f12acb70975d94dbe81ba219d7b622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipUi
+  tooltipPanel: {fileID: 759619288}
+  tooltipText: {fileID: 1811168212}
 --- !u!1 &1618285012
 GameObject:
   m_ObjectHideFlags: 0
@@ -18218,7 +18265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -18251,8 +18298,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18500,6 +18547,7 @@ GameObject:
   - component: {fileID: 1957352224}
   - component: {fileID: 1957352226}
   - component: {fileID: 1957352225}
+  - component: {fileID: 1957352227}
   m_Layer: 5
   m_Name: Damage
   m_TagString: Untagged
@@ -18627,6 +18675,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1957352223}
   m_CullTransparentMesh: 1
+--- !u!114 &1957352227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957352223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981427ee8eccdc14c9abb297f0c61a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TooltipTrigger
+  tooltipUI: {fileID: 1608817757}
+  description: Bullet Damage
+  tooltipSize: {x: 200, y: 80}
 --- !u!1 &2019225342
 GameObject:
   m_ObjectHideFlags: 0
