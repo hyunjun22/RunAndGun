@@ -10,19 +10,20 @@ public class Zombie : MonoBehaviour
     [SerializeField] private float hitStopTime = 0.2f;
     [SerializeField] private float attackDamage = 10f;
     [SerializeField] private float attackCooldown = 1f;
+    [SerializeField] private float expReward = 20f;
 
     [SerializeField] private Slider healthBar; // 체력바 UI
 
     float currentHealth;
     float lastAttackTime;
-    
+    bool isHit = false; // 맞았는지 안맞았는지
+
     Transform playerTransform;
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
-
     Color originalColor;
+    PlayerStats playerStats;
 
-    bool isHit = false; // 맞았는지 안맞았는지
 
     void Awake()
     {
@@ -30,6 +31,8 @@ public class Zombie : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         originalColor = spriteRenderer.color;
+
+        ConnectPlayerStats(); // PlayerStats와 연결
     }
 
     // 오브젝트가 활성화 될 때
@@ -43,6 +46,7 @@ public class Zombie : MonoBehaviour
         isHit = false;
 
         UpdateHealthBar(); // 체력바 업데이트
+        ConnectPlayerStats();
     }
 
     void FixedUpdate()
@@ -92,6 +96,7 @@ public class Zombie : MonoBehaviour
     void Die()
     {
         GameManager.Instance.AddScore(1); // 점수 증가
+        playerStats.AddExp(expReward); // 경험치 반환
 
         // 사망 시 비활성화
         gameObject.SetActive(false);
@@ -132,5 +137,16 @@ public class Zombie : MonoBehaviour
         {
             healthBar.value = currentHealth / maxHealth; // 체력 비율 계산
         }
+    }
+
+    
+    // PlayerStats과 연결
+    void ConnectPlayerStats(){
+        
+        if(playerStats != null)
+            return;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        playerStats = player.GetComponent<PlayerStats>();
     }
 }

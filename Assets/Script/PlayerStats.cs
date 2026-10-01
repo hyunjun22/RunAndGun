@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    [SerializeField] PlayerUI playerUI;
+
     [Header("Health")]
     [SerializeField] float maxHealth = 100f;
     [SerializeField] float currentHealth = 100f;
@@ -21,6 +23,14 @@ public class PlayerStats : MonoBehaviour
     public float Damage => damage;
     public float AttackSpeed => attackSpeed;
     public float BulletSpeed => bulletSpeed;
+
+    [Header("Level")]
+    [SerializeField] int level = 1;
+    [SerializeField] float currentExp = 0f;
+    [SerializeField] float requiredExp = 100f;
+
+    public float CurrentExp => currentExp;
+    public float RequiredExp => requiredExp;
 
     public void TakeDamage(float amount)
     {
@@ -60,6 +70,33 @@ public class PlayerStats : MonoBehaviour
     {
         maxHealth += amount;
         currentHealth += amount;
+    }
+
+    public void AddExp(float amount){
+        currentExp += amount;
+        
+        playerUI.UpdateExpBar();
+
+        if(currentExp >= requiredExp){
+            LevelUp();
+        }
+    }
+
+    void LevelUp(){
+        currentExp -= requiredExp;
+
+        level++;
+
+        requiredExp *= 1.2f;
+
+        // PlayerUI
+
+        Time.timeScale = 0f;
+    }
+
+    void EndLevelUp(){
+        playerUI.UpdateExpBar();
+        Time.timeScale = 1f;
     }
 
 }

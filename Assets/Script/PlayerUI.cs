@@ -7,20 +7,26 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private PlayerStats playerStats;
 
+    [Header("Stats")]
     [SerializeField] private Slider healthBar; // 체력바 UI
     [SerializeField] private TMP_Text damageText;
     [SerializeField] private TMP_Text attackSpeedText;
     [SerializeField] private TMP_Text movementSpeedText;
     [SerializeField] private TMP_Text healthText;
+    
+    [Header("EXP")]
+    [SerializeField] private Slider expBar;
+    [SerializeField] private GameObject levelUpPanel;
 
 
 
     private void Start()
     {
-        ReturnSetText("Damage");
-        ReturnSetText("AttackSpeed");
-        ReturnSetText("MovementSpeed");
-        ReturnSetText("Health");
+        UpdateSetText("Damage");
+        UpdateSetText("AttackSpeed");
+        UpdateSetText("MovementSpeed");
+        UpdateSetText("Health");
+        UpdateExpBar();
     }
 
 
@@ -30,11 +36,15 @@ public class PlayerUI : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.value = playerStats.CurrentHealth / playerStats.MaxHealth;
-            ReturnSetText("Health");
+            UpdateSetText("Health");
         }
     }
 
-    private void ReturnSetText(string contents)
+    public void UpdateExpBar(){
+        expBar.value = playerStats.CurrentExp / playerStats.RequiredExp;
+    }
+
+    private void UpdateSetText(string contents)
     {
         switch (contents)
         {
