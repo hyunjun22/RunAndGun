@@ -2,11 +2,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Splines;
+using UnityEngine.UI;
 
 public class TooltipUI : MonoBehaviour
 {
     [SerializeField] GameObject tooltipPanel;
-    [SerializeField] TMP_Text tooltipText;
+    [SerializeField] Text tooltipText;
 
     RectTransform tooltipRect;
     private bool setPos = false;

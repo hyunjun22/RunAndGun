@@ -89,14 +89,8 @@ public class PlayerStats : MonoBehaviour
 
         requiredExp *= 1.2f;
 
-        // PlayerUI
-
-        Time.timeScale = 0f;
-    }
-
-    void EndLevelUp(){
         playerUI.UpdateExpBar();
-        Time.timeScale = 1f;
-    }
 
+        playerUI.ShowLevelUp(); // 레벨업 패널 보여주기
+    }
 }

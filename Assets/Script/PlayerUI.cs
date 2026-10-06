@@ -1,6 +1,9 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using NUnit.Framework;
+using System.Data;
 
 public class PlayerUI : MonoBehaviour
 {
@@ -14,11 +17,12 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private TMP_Text movementSpeedText;
     [SerializeField] private TMP_Text healthText;
     
-    [Header("EXP")]
+    [Header("LevelUp")]
     [SerializeField] private Slider expBar;
     [SerializeField] private GameObject levelUpPanel;
-
-
+    [SerializeField] private LevelUpPanel[] levelUpPanels;
+    [SerializeField] List<UpgradeData> upgradeList;
+    
 
     private void Start()
     {
@@ -44,7 +48,7 @@ public class PlayerUI : MonoBehaviour
         expBar.value = playerStats.CurrentExp / playerStats.RequiredExp;
     }
 
-    private void UpdateSetText(string contents)
+    private void UpdateSetText(string contents = "all")
     {
         switch (contents)
         {
@@ -59,6 +63,75 @@ public class PlayerUI : MonoBehaviour
                 break;
             case "Health":
                 healthText.text = playerStats.CurrentHealth.ToString() + " / " + playerStats.MaxHealth.ToString();
+                break;
+        }
+
+        if (contents == "all") {
+            damageText.text = playerStats.Damage.ToString();
+            attackSpeedText.text = playerStats.AttackSpeed.ToString();
+            movementSpeedText.text = playerStats.MoveSpeed.ToString();
+            healthText.text = playerStats.CurrentHealth.ToString() + " / " + playerStats.MaxHealth.ToString();
+        }
+    }
+
+    // 레벨업 창 띄우기
+    public void ShowLevelUp()
+    {
+        levelUpPanel.SetActive(true);
+
+        Time.timeScale = 0f;
+
+        CreateRandomOptions();
+    }
+
+    void CreateRandomOptions()
+    {
+        List<UpgradeData> tempList = new List<UpgradeData>(upgradeList);
+
+        for (int i = 0; i < levelUpPanels.Length; i++)
+        {
+            int randomIndex = Random.Range(0, tempList.Count);
+
+            UpgradeData selectedUpgrade = tempList[randomIndex];
+
+            // 같은 강화가 나오지 않도록 제거
+            tempList.RemoveAt(randomIndex);
+
+            levelUpPanels[i].Setup(selectedUpgrade, SelectUpgrade);
+        }
+
+    }
+
+    void SelectUpgrade(UpgradeData data)
+    {
+        ApplyUpgrade(data);
+
+        UpdateSetText(); // UI 변환
+
+        levelUpPanel.SetActive(false);
+
+        Time.timeScale = 1f;
+    }
+
+    // 적용하기
+    void ApplyUpgrade(UpgradeData data)
+    {
+        switch (data.type)
+        {
+            case UpgradeType.Damage:
+                playerStats.UpgradeDamage(data.value);
+                break;
+
+            case UpgradeType.AttackSpeed:
+                playerStats.UpgradeAttackSpeed(data.value);
+                break;
+
+            case UpgradeType.MoveSpeed:
+                playerStats.UpgradeMoveSpeed(data.value);
+                break;
+
+            case UpgradeType.MaxHealth:
+                playerStats.UpgradeMaxHealth(data.value);
                 break;
         }
     }
