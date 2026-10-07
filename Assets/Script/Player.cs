@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
 
     Color originalColor;
 
+    public bool isInvincible = false;
+
     void Awake()
     {
         rg = GetComponent<Rigidbody2D>();
@@ -48,6 +50,9 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isInvincible)
+            return;
+
         playerStats.TakeDamage(damage);
         playerUI.UpdateHealthBar();
 
