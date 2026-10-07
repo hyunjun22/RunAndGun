@@ -14,7 +14,7 @@ public class LevelUpPanel : MonoBehaviour
     public void Setup(UpgradeData data, Action<UpgradeData> onSelect)
     {
         icon.texture = data.icon;
-        nameText.text = data.name;
+        nameText.text = data.upgradeName;
         descriptionText.text = data.description;
         descriptionText.text = data.description.Replace("{Value}", data.value.ToString());
 

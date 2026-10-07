@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using System.Data;
 
+public enum StatTextType { Damege, AttackSpeed, MovementSpeed, Health, All }
+
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Player player;
@@ -26,10 +28,7 @@ public class PlayerUI : MonoBehaviour
 
     private void Start()
     {
-        UpdateSetText("Damage");
-        UpdateSetText("AttackSpeed");
-        UpdateSetText("MovementSpeed");
-        UpdateSetText("Health");
+        UpdateSetText();
         UpdateExpBar();
     }
 
@@ -40,7 +39,7 @@ public class PlayerUI : MonoBehaviour
         if (healthBar != null)
         {
             healthBar.value = playerStats.CurrentHealth / playerStats.MaxHealth;
-            UpdateSetText("Health");
+            UpdateSetText(StatTextType.Health);
         }
     }
 
@@ -48,29 +47,28 @@ public class PlayerUI : MonoBehaviour
         expBar.value = playerStats.CurrentExp / playerStats.RequiredExp;
     }
 
-    private void UpdateSetText(string contents = "all")
+    private void UpdateSetText(StatTextType type = StatTextType.All)
     {
-        switch (contents)
+        switch (type)
         {
-            case "Damage":
+            case StatTextType.Damege:
                 damageText.text = playerStats.Damage.ToString();
                 break;
-            case "AttackSpeed":
+            case StatTextType.AttackSpeed:
                 attackSpeedText.text = playerStats.AttackSpeed.ToString();
                 break;
-            case "MovementSpeed":
+            case StatTextType.MovementSpeed:
                 movementSpeedText.text = playerStats.MoveSpeed.ToString();
                 break;
-            case "Health":
+            case StatTextType.Health:
                 healthText.text = playerStats.CurrentHealth.ToString() + " / " + playerStats.MaxHealth.ToString();
                 break;
-        }
-
-        if (contents == "all") {
-            damageText.text = playerStats.Damage.ToString();
-            attackSpeedText.text = playerStats.AttackSpeed.ToString();
-            movementSpeedText.text = playerStats.MoveSpeed.ToString();
-            healthText.text = playerStats.CurrentHealth.ToString() + " / " + playerStats.MaxHealth.ToString();
+            case StatTextType.All:
+                damageText.text = playerStats.Damage.ToString();
+                attackSpeedText.text = playerStats.AttackSpeed.ToString();
+                movementSpeedText.text = playerStats.MoveSpeed.ToString();
+                healthText.text = playerStats.CurrentHealth.ToString() + " / " + playerStats.MaxHealth.ToString();
+                break;
         }
     }
 
@@ -113,7 +111,7 @@ public class PlayerUI : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    // 적용하기
+    // 레벨업 적용하기
     void ApplyUpgrade(UpgradeData data)
     {
         switch (data.type)
