@@ -70,6 +70,17 @@ public class PlayerStats : MonoBehaviour
     {
         maxHealth += amount;
         currentHealth += amount;
+    } 
+
+    // 체력 회복
+    public void Recovery(float amount)
+    {
+        if(maxHealth <= currentHealth + amount){
+            currentHealth = maxHealth;
+            return;
+        }
+
+        currentHealth += amount;
     }
 
     public void AddExp(float amount){

@@ -80,6 +80,9 @@ public class Player : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    
+    public void Recover(float amount)
+    {
+        
+    }
 
 }

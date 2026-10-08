@@ -14576,7 +14576,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -15980,7 +15980,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -17557,7 +17557,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -18159,7 +18159,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -18450,7 +18450,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0
@@ -19130,7 +19130,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -19236,10 +19236,10 @@ MonoBehaviour:
   m_FillRect: {fileID: 224038550}
   m_HandleRect: {fileID: 517994318}
   m_Direction: 0
-  m_MinValue: 0
-  m_MaxValue: 1
+  m_MinValue: 0.1
+  m_MaxValue: 3
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -19810,7 +19810,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -21705,7 +21705,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 54
     m_FontStyle: 0
     m_BestFit: 0
@@ -21847,6 +21847,7 @@ GameObject:
   - component: {fileID: 1608817754}
   - component: {fileID: 1608817756}
   - component: {fileID: 1608817757}
+  - component: {fileID: 1608817758}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -21929,6 +21930,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TooltipUi
   tooltipPanel: {fileID: 759619288}
   tooltipText: {fileID: 1901548936}
+--- !u!114 &1608817758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1608817753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52afd6f0f6e643042ae33b45ff7415b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DeveloperManager
+  player: {fileID: 1118471697}
+  playerStats: {fileID: 1118471704}
+  playerUI: {fileID: 1608817756}
+  developerPanel: {fileID: 466509255}
+  invincibleToggle: {fileID: 2071980326}
+  timeScaleSlider: {fileID: 1101764868}
+  timeScaleValueText: {fileID: 869914887}
+  experiencePlusButton: {fileID: 179274455}
+  levelUpButton: {fileID: 1999449108}
+  HealthPlusButton: {fileID: 908416963}
+  HealthMinusButton: {fileID: 460808655}
+  UpgradeAttackDamageButton: {fileID: 1799628969}
+  DowngradeAttackDamageButton: {fileID: 791840074}
 --- !u!1 &1618285012
 GameObject:
   m_ObjectHideFlags: 0
@@ -22546,7 +22572,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 32
     m_FontStyle: 0
     m_BestFit: 0
@@ -24949,7 +24975,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: d77947c3022a8b94bbc1de3e7f457339, type: 3}
+    m_Font: {fileID: 12800000, guid: 746b2792c32118d469d45af144a7fd06, type: 3}
     m_FontSize: 36
     m_FontStyle: 0
     m_BestFit: 0

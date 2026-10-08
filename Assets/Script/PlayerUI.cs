@@ -24,6 +24,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private GameObject levelUpPanel;
     [SerializeField] private LevelUpPanel[] levelUpPanels;
     [SerializeField] List<UpgradeData> upgradeList;
+    float currentTimeScale;
     
 
     private void Start()
@@ -47,7 +48,7 @@ public class PlayerUI : MonoBehaviour
         expBar.value = playerStats.CurrentExp / playerStats.RequiredExp;
     }
 
-    private void UpdateSetText(StatTextType type = StatTextType.All)
+    public void UpdateSetText(StatTextType type = StatTextType.All)
     {
         switch (type)
         {
@@ -77,6 +78,7 @@ public class PlayerUI : MonoBehaviour
     {
         levelUpPanel.SetActive(true);
 
+        currentTimeScale = Time.timeScale;
         Time.timeScale = 0f;
 
         CreateRandomOptions();
@@ -108,7 +110,7 @@ public class PlayerUI : MonoBehaviour
 
         levelUpPanel.SetActive(false);
 
-        Time.timeScale = 1f;
+        Time.timeScale = currentTimeScale;
     }
 
     // 레벨업 적용하기
