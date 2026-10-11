@@ -133,6 +133,10 @@ public class PlayerUI : MonoBehaviour
             case UpgradeType.MaxHealth:
                 playerStats.UpgradeMaxHealth(data.value);
                 break;
+
+            case UpgradeType.Pierce:
+                playerStats.UpgradePierceCount(Mathf.RoundToInt(data.value));
+                break;
         }
     }
 }

@@ -53,6 +53,7 @@ public class Gun : MonoBehaviour
         // 총알 발사 방향 계산
         Vector2 direction = (mouseWorldPosition - transform.position).normalized;
         GameObject bullet = ObjPoolManager.GetBullet();
+        if (bullet == null) return;
         bullet.transform.position = Muzzle.position;
         bullet.transform.rotation = Muzzle.rotation;
         bullet.SetActive(true);
@@ -64,6 +65,7 @@ public class Gun : MonoBehaviour
         // 데미지 설정
         Bullet bulletScript = bullet.GetComponent<Bullet>();
         bulletScript.SetDamage(playerStats.Damage);
+        bulletScript.SetPierceCount(playerStats.PierceCount);
         
     }
 }

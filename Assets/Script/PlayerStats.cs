@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] float damage = 10f;
     [SerializeField] float attackSpeed = 1f;
     [SerializeField] float bulletSpeed = 10f;
+    [SerializeField, Min(0)] int pierceCount = 0;
 
 
     public float MaxHealth => maxHealth;
@@ -23,6 +24,12 @@ public class PlayerStats : MonoBehaviour
     public float Damage => damage;
     public float AttackSpeed => attackSpeed;
     public float BulletSpeed => bulletSpeed;
+    public int PierceCount => pierceCount;
+
+    public void UpgradePierceCount(int amount)
+    {
+        pierceCount = Mathf.Max(0, pierceCount + amount);
+    }
 
     [Header("Level")]
     [SerializeField] int level = 1;

@@ -14661,7 +14661,7 @@ RectTransform:
   m_Father: {fileID: 149470688}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15781,7 +15781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &466509256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16123,7 +16123,7 @@ RectTransform:
   m_Father: {fileID: 830684563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -19610,6 +19610,7 @@ MonoBehaviour:
   damage: 10
   attackSpeed: 1
   bulletSpeed: 10
+  pierceCount: 0
   level: 1
   currentExp: 0
   requiredExp: 100
@@ -21916,6 +21917,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83107d4d712cc934a94e147934638d3a, type: 2}
   - {fileID: 11400000, guid: 6bb85dc1ae049f64d941805c122505fc, type: 2}
   - {fileID: 11400000, guid: 545921a2f388a6a428f2abff6c9c4a25, type: 2}
+  - {fileID: 11400000, guid: c3c61714b8c35f044a63b2f1fa93d877, type: 2}
 --- !u!114 &1608817757
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b913ab144470c3246bdff96fe9e02766, type: 3}
+  m_Name: Pierce
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeData
+  icon: {fileID: 0}
+  upgradeName: "\uAD00\uD1B5 \uD0C4\uD658"
+  description: "\uCD1D\uC54C\uC774 \uAD00\uD1B5\uD560 \uC218 \uC788\uB294 \uC801\uC774 {Value}\uB9C8\uB9AC \uC99D\uAC00\uD569\uB2C8\uB2E4. \uBC18\uBCF5 \uC120\uD0DD \uC2DC \uB204\uC801\uB429\uB2C8\uB2E4."
+  type: 4
+  value: 1
