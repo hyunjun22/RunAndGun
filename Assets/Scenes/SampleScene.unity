@@ -19611,6 +19611,7 @@ MonoBehaviour:
   attackSpeed: 1
   bulletSpeed: 10
   pierceCount: 0
+  projectileCount: 1
   level: 1
   currentExp: 0
   requiredExp: 100
@@ -21836,6 +21837,8 @@ MonoBehaviour:
   ObjPoolManager: {fileID: 1485743993}
   Muzzle: {fileID: 1618285013}
   playerStats: {fileID: 1118471704}
+  angleBetweenBullets: 15
+  maxSpreadAngle: 90
 --- !u!1 &1608817753
 GameObject:
   m_ObjectHideFlags: 0
@@ -21918,6 +21921,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6bb85dc1ae049f64d941805c122505fc, type: 2}
   - {fileID: 11400000, guid: 545921a2f388a6a428f2abff6c9c4a25, type: 2}
   - {fileID: 11400000, guid: c3c61714b8c35f044a63b2f1fa93d877, type: 2}
+  - {fileID: 11400000, guid: 9ca90134f2f20b8498309abf8d4e464c, type: 2}
 --- !u!114 &1608817757
 MonoBehaviour:
   m_ObjectHideFlags: 0

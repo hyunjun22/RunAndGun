@@ -2,7 +2,7 @@ using UnityEngine;
 
 public enum UpgradeType
 {
-    Damage, AttackSpeed, MoveSpeed, MaxHealth, Pierce
+    Damage, AttackSpeed, MoveSpeed, MaxHealth, Pierce, MultiShot
 }
 
 [CreateAssetMenu(fileName = "NewUpgradeData", menuName = "Upgrade/Upgrade Data")]

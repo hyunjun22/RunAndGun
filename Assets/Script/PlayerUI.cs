@@ -137,6 +137,10 @@ public class PlayerUI : MonoBehaviour
             case UpgradeType.Pierce:
                 playerStats.UpgradePierceCount(Mathf.RoundToInt(data.value));
                 break;
+
+            case UpgradeType.MultiShot:
+                playerStats.UpgradeProjectileCount(Mathf.RoundToInt(data.value));
+                break;
         }
     }
 }

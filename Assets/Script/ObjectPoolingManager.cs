@@ -55,6 +55,9 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        return null;
+        GameObject newBullet = Instantiate(bulletPrefab, transform);
+        newBullet.SetActive(false);
+        bulletPoolList.Add(newBullet);
+        return newBullet;
     }
 }
