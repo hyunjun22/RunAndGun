@@ -80,6 +80,7 @@ public class Gun : MonoBehaviour
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.SetDamage(playerStats.Damage);
             bulletScript.SetPierceCount(playerStats.PierceCount);
+            bulletScript.SetExplosion(playerStats.ExplosionDamage, ObjPoolManager);
         }
     }
 }

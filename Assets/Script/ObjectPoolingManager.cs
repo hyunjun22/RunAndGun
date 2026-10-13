@@ -63,4 +63,27 @@ public class ObjectPoolingManager : MonoBehaviour
         bulletPoolList.Add(newBullet);
         return newBullet;
     }
+
+    public void PlayExplosion(Vector3 position)
+    {
+        if (explosionPrefab == null) return;
+        GameObject effect = null;
+        foreach (GameObject candidate in explosionPoolList)
+        {
+            if (!candidate.activeInHierarchy)
+            {
+                effect = candidate;
+                break;
+            }
+        }
+        if (effect == null)
+        {
+            effect = Instantiate(explosionPrefab, transform);
+            effect.SetActive(false);
+            explosionPoolList.Add(effect);
+        }
+        effect.transform.position = position;
+        effect.transform.rotation = Quaternion.identity;
+        effect.SetActive(true);
+    }
 }

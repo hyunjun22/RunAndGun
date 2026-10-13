@@ -141,6 +141,10 @@ public class PlayerUI : MonoBehaviour
             case UpgradeType.MultiShot:
                 playerStats.UpgradeProjectileCount(Mathf.RoundToInt(data.value));
                 break;
+
+            case UpgradeType.Explosion:
+                playerStats.UpgradeExplosionDamage(data.value);
+                break;
         }
     }
 }
