@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 1213794616084661362}
   - component: {fileID: 4728298110340131580}
   - component: {fileID: 4102156993096476918}
+  - component: {fileID: 3630886799765799631}
+  - component: {fileID: 3857030644517723380}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Untagged
@@ -252,7 +254,42 @@ MonoBehaviour:
   hitStopTime: 0.2
   attackDamage: 10
   attackCooldown: 1
+  expReward: 20
   healthBar: {fileID: 1362345726902951593}
+--- !u!95 &3630886799765799631
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712450027355858754}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc2a6416d3abe9c4cb20b801bb7dbe68, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3857030644517723380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712450027355858754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c16a393091d8f438e7d63ab7fd91b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnimation
 --- !u!1 &4744291847363666899
 GameObject:
   m_ObjectHideFlags: 0

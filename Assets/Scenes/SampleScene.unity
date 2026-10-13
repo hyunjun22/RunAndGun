@@ -21184,7 +21184,7 @@ Tilemap:
       - {fileID: -2367147373253303548, guid: b4bbf339dea0cbb428b77016b89d4a5d, type: 3}
       - {fileID: -3397307686256540517, guid: b4bbf339dea0cbb428b77016b89d4a5d, type: 3}
       - {fileID: -2266587486849628351, guid: b4bbf339dea0cbb428b77016b89d4a5d, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   m_TileAssetArray:
@@ -21841,7 +21841,7 @@ Transform:
   m_GameObject: {fileID: 1541012195}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
