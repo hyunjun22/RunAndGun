@@ -8,25 +8,28 @@ public class ObjectPoolingManager : MonoBehaviour
     [SerializeField] int zombiePoolSize = 20;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] int bulletPoolSize = 100;
+    [SerializeField] GameObject explosionPrefab;
+    [SerializeField] int explosionPoolSize = 100;
 
 
     List<GameObject> zombiePoolList = new List<GameObject>();
     List<GameObject> bulletPoolList = new List<GameObject>();
+    List<GameObject> explosionPoolList = new List<GameObject>();
 
 
     void Start()
     {
         SimpleSetting(zombiePrefab, zombiePoolSize, zombiePoolList);
         SimpleSetting(bulletPrefab, bulletPoolSize, bulletPoolList);
+        SimpleSetting(explosionPrefab, explosionPoolSize, explosionPoolList);
     }
 
 
-    // 기초 세팅 간편화
     void SimpleSetting(GameObject prefab, int PoolSize, List<GameObject> objList)
     {
         for (int i = 0; i < PoolSize; i++)
         {
-            GameObject obj = Instantiate(prefab, transform); // 오브젝트 생성할 때 자식으로 설정함
+            GameObject obj = Instantiate(prefab, transform);
             obj.SetActive(false);
             objList.Add(obj);
         }

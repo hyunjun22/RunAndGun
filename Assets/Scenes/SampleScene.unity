@@ -21570,6 +21570,8 @@ MonoBehaviour:
   zombiePoolSize: 20
   bulletPrefab: {fileID: 2709019266034368228, guid: 0b38364a5f54ee9488acfdedb073c7ae, type: 3}
   bulletPoolSize: 100
+  explosionPrefab: {fileID: 8729517505350111024, guid: 48f62cb86d542b74c9b50546ab57837c, type: 3}
+  explosionPoolSize: 100
 --- !u!1 &1537264028
 GameObject:
   m_ObjectHideFlags: 0
