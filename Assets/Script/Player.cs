@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     private Vector2 MovementInput;
     private Rigidbody2D rg;
     private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     Color originalColor;
 
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
         rg = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
+        animator = GetComponent<Animator>();
     }
 
     void OnEnable()
@@ -46,6 +48,29 @@ public class Player : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         MovementInput = context.ReadValue<Vector2>();
+
+        bool isMoving = MovementInput.sqrMagnitude > 0.01f;
+        animator.SetBool("IsMoving", isMoving);
+
+        if (!isMoving)
+            return;
+
+        if(Mathf.Abs(MovementInput.x) > Mathf.Abs(MovementInput.y))
+        {
+            // 좌우 이동
+            if (MovementInput.x > 0)
+                animator.SetInteger("Direction", 1); // 오른쪽
+            else
+                animator.SetInteger("Direction", 3); // 왼쪽
+        }
+        else
+        {
+            // 상하 이동
+            if (MovementInput.y > 0)
+                animator.SetInteger("Direction", 0); // 위쪽
+            else
+                animator.SetInteger("Direction", 2); // 아래쪽
+        }
     }
 
     public void TakeDamage(float damage)
