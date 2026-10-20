@@ -23,6 +23,7 @@ public class Zombie : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Color originalColor;
     PlayerStats playerStats;
+    EnemyAnimation enemyAnimation;
 
 
     void Awake()
@@ -33,6 +34,8 @@ public class Zombie : MonoBehaviour
         originalColor = spriteRenderer.color;
 
         ConnectPlayerStats(); // PlayerStats와 연결
+
+        enemyAnimation = GetComponent<EnemyAnimation>();
     }
 
     // 오브젝트가 활성화 될 때
@@ -85,12 +88,18 @@ public class Zombie : MonoBehaviour
         // 이동 정지
         rb.linearVelocity = Vector2.zero;
 
+        // 애니메이션 일시정지
+        enemyAnimation.SetHitStop(true);
+
         spriteRenderer.color = Color.red;
 
         yield return new WaitForSeconds(hitStopTime);
 
         spriteRenderer.color = originalColor;
         isHit = false;
+
+        // 애니메이션 재생
+        enemyAnimation.SetHitStop(false);
     }
 
     void Die()
