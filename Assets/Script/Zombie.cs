@@ -48,6 +48,8 @@ public class Zombie : MonoBehaviour
         spriteRenderer.color = originalColor;
         isHit = false;
 
+        enemyAnimation.SetHitStop(false); // 애니메이션 재생
+
         UpdateHealthBar(); // 체력바 업데이트
         ConnectPlayerStats();
     }
