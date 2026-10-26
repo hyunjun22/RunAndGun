@@ -11,15 +11,15 @@ public class Bullet : MonoBehaviour
     int remainingPierces;
     float explosionDamage;
     ObjectPoolingManager poolManager;
-    readonly HashSet<Zombie> explosionTargets = new HashSet<Zombie>();
+    readonly HashSet<Enemy> explosionTargets = new HashSet<Enemy>();
     readonly List<Collider2D> explosionColliders = new List<Collider2D>();
-    readonly HashSet<Zombie> hitZombies = new HashSet<Zombie>();
+    readonly HashSet<Enemy> hitEnemies = new HashSet<Enemy>();
 
     void OnEnable()
     {
         startPosition = transform.position;
         remainingPierces = 0;
-        hitZombies.Clear();
+        hitEnemies.Clear();
         explosionDamage = 0f;
         poolManager = null;
         explosionTargets.Clear();
@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour
         foreach (Collider2D hit in explosionColliders)
         {
             if (hit == null) continue;
-            Zombie target = hit.GetComponentInParent<Zombie>();
+            Enemy target = hit.GetComponentInParent<Enemy>();
             if (target != null && target.gameObject.activeInHierarchy && explosionTargets.Add(target))
                 target.takeDamage(explosionDamage);
         }
@@ -77,14 +77,14 @@ public class Bullet : MonoBehaviour
     {
         if (!gameObject.activeInHierarchy) return;
 
-        Zombie zombie = collision.GetComponentInParent<Zombie>();
+        Enemy enemy = collision.GetComponentInParent<Enemy>();
 
-        if(zombie != null && zombie.gameObject.activeInHierarchy && hitZombies.Add(zombie))
+        if(enemy != null && enemy.gameObject.activeInHierarchy && hitEnemies.Add(enemy))
         {
             // 좀비가 맞다면
             // 총알 데미지를 좀비에게 가한다.
-            Vector3 explosionPosition = zombie.transform.position;
-            zombie.takeDamage(damage);
+            Vector3 explosionPosition = enemy.transform.position;
+            enemy.takeDamage(damage);
             // 직격으로 적이 죽어도 해당 위치에서 폭발합니다.
             Explode(explosionPosition);
 

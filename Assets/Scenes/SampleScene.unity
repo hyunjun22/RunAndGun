@@ -16398,6 +16398,8 @@ MonoBehaviour:
   - {fileID: 1934191660}
   - {fileID: 699809307}
   spawnInterval: 3
+  skeletonStartTime: 30
+  skeletonSpawnInterval: 5
 --- !u!1 &550807642
 GameObject:
   m_ObjectHideFlags: 0
@@ -21596,6 +21598,10 @@ MonoBehaviour:
   bulletPoolSize: 100
   explosionPrefab: {fileID: 8729517505350111024, guid: 48f62cb86d542b74c9b50546ab57837c, type: 3}
   explosionPoolSize: 100
+  skeletonPrefab: {fileID: 6399116018932584381, guid: 4e5ad3db644d5ec498dce7d9b2714a75, type: 3}
+  skeletonPoolSize: 10
+  arrowPrefab: {fileID: 7357358688476099232, guid: 8c1c694409c047d4ab35951f9a2c2525, type: 3}
+  arrowPoolSize: 40
 --- !u!1 &1537264028
 GameObject:
   m_ObjectHideFlags: 0
@@ -25301,7 +25307,7 @@ SceneRoots:
   - {fileID: 1699027326}
   - {fileID: 274423639}
   - {fileID: 533062048}
-  - {fileID: 1485743992}
   - {fileID: 684678530}
   - {fileID: 1938387397}
   - {fileID: 1608817755}
+  - {fileID: 1485743992}

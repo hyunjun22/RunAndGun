@@ -10,11 +10,26 @@ public class ObjectPoolingManager : MonoBehaviour
     [SerializeField] int bulletPoolSize = 100;
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] int explosionPoolSize = 100;
+    [SerializeField] GameObject skeletonPrefab;
+    [SerializeField, Min(0)] int skeletonPoolSize = 10;
+    [SerializeField] GameObject arrowPrefab;
+    [SerializeField, Min(0)] int arrowPoolSize = 40;
 
 
     List<GameObject> zombiePoolList = new List<GameObject>();
     List<GameObject> bulletPoolList = new List<GameObject>();
     List<GameObject> explosionPoolList = new List<GameObject>();
+    readonly List<GameObject> skeletonPoolList = new List<GameObject>();
+    readonly List<GameObject> arrowPoolList = new List<GameObject>();
+    Transform inactiveRoot;
+
+    void Awake()
+    {
+        var root = new GameObject("Inactive Pool Creation");
+        root.SetActive(false);
+        root.transform.SetParent(transform, false);
+        inactiveRoot = root.transform;
+    }
 
 
     void Start()
@@ -22,15 +37,17 @@ public class ObjectPoolingManager : MonoBehaviour
         SimpleSetting(zombiePrefab, zombiePoolSize, zombiePoolList);
         SimpleSetting(bulletPrefab, bulletPoolSize, bulletPoolList);
         SimpleSetting(explosionPrefab, explosionPoolSize, explosionPoolList);
+        SimpleSetting(skeletonPrefab, skeletonPoolSize, skeletonPoolList);
+        SimpleSetting(arrowPrefab, arrowPoolSize, arrowPoolList);
     }
 
 
     void SimpleSetting(GameObject prefab, int PoolSize, List<GameObject> objList)
     {
+        if (prefab == null) return;
         for (int i = 0; i < PoolSize; i++)
         {
-            GameObject obj = Instantiate(prefab, transform);
-            obj.SetActive(false);
+            GameObject obj = CreatePooled(prefab);
             objList.Add(obj);
         }
     }
@@ -58,8 +75,7 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        GameObject newBullet = Instantiate(bulletPrefab, transform);
-        newBullet.SetActive(false);
+        GameObject newBullet = CreatePooled(bulletPrefab);
         bulletPoolList.Add(newBullet);
         return newBullet;
     }
@@ -78,12 +94,37 @@ public class ObjectPoolingManager : MonoBehaviour
         }
         if (effect == null)
         {
-            effect = Instantiate(explosionPrefab, transform);
-            effect.SetActive(false);
+            effect = CreatePooled(explosionPrefab);
             explosionPoolList.Add(effect);
         }
         effect.transform.position = position;
         effect.transform.rotation = Quaternion.identity;
         effect.SetActive(true);
     }
+
+    GameObject CreatePooled(GameObject prefab)
+    {
+        GameObject obj = Instantiate(prefab, inactiveRoot);
+        obj.SetActive(false);
+        obj.transform.SetParent(transform, false);
+        return obj;
+    }
+
+    GameObject GetAvailable(GameObject prefab, List<GameObject> list)
+    {
+        if (prefab == null) return null;
+        foreach (GameObject obj in list) if (!obj.activeSelf) return obj;
+        GameObject created = CreatePooled(prefab);
+        list.Add(created);
+        return created;
+    }
+
+    public GameObject GetSkeleton()
+    {
+        GameObject obj = GetAvailable(skeletonPrefab, skeletonPoolList);
+        if (obj != null) obj.GetComponent<Skeleton>().SetPoolManager(this);
+        return obj;
+    }
+
+    public GameObject GetArrow() => GetAvailable(arrowPrefab, arrowPoolList);
 }

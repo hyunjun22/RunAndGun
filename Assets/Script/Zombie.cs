@@ -1,163 +1,19 @@
 using UnityEngine;
-using System.Collections;
-using Unity.Jobs;
-using UnityEngine.UI;
 
-public class Zombie : MonoBehaviour
+public class Zombie : Enemy
 {
-    [SerializeField] private float moveSpeed = 2f;
-    [SerializeField] private float maxHealth = 100f;
-    [SerializeField] private float hitStopTime = 0.2f;
-    [SerializeField] private float attackDamage = 10f;
-    [SerializeField] private float attackCooldown = 1f;
-    [SerializeField] private float expReward = 20f;
-
-    [SerializeField] private Slider healthBar; // 체력바 UI
-
-    float currentHealth;
-    float lastAttackTime;
-    bool isHit = false; // 맞았는지 안맞았는지
-
-    Transform playerTransform;
-    Rigidbody2D rb;
-    SpriteRenderer spriteRenderer;
-    Color originalColor;
-    PlayerStats playerStats;
-    EnemyAnimation enemyAnimation;
-
-
-    void Awake()
+    protected override void Act()
     {
-        rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        originalColor = spriteRenderer.color;
-
-        ConnectPlayerStats(); // PlayerStats와 연결
-
-        enemyAnimation = GetComponent<EnemyAnimation>();
+        Vector2 direction = (playerTransform.position - transform.position).normalized;
+        rb.linearVelocity = direction * moveSpeed;
     }
 
-    // 오브젝트가 활성화 될 때
-    void OnEnable()
+    void OnCollisionStay2D(Collision2D collision)
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform; // 태그가 "Player"인 게임 오브젝트를 찾아서 Transform 컴포넌트를 가져옴
-        
-        currentHealth = maxHealth; // 활성화될 때 현재 체력을 설정
-
-        spriteRenderer.color = originalColor;
-        isHit = false;
-
-        enemyAnimation.SetHitStop(false); // 애니메이션 재생
-
-        UpdateHealthBar(); // 체력바 업데이트
-        ConnectPlayerStats();
-    }
-
-    void FixedUpdate()
-    {
-        if (playerTransform == null || isHit) return;
-
-        MoveToPlayer();
-    }
-
-    // 플레이어를 따라가는 함수
-    void MoveToPlayer()
-    {
-        Vector2 direction = (playerTransform.position - transform.position).normalized; // 플레이어와 좀비 사이의 방향 벡터 계산
-
-        rb.linearVelocity = direction * moveSpeed; // 좀비의 속도를 설정하여 플레이어를 향해 이동
-    }
-
-    public void takeDamage(float damage)
-    {
-        currentHealth -= damage;
-
-        UpdateHealthBar(); // 체력바 업데이트
-
-        StartCoroutine(HitEffect());
-
-        if(currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-
-    IEnumerator HitEffect()
-    {
-        isHit = true;
-
-        // 이동 정지
-        rb.linearVelocity = Vector2.zero;
-
-        // 애니메이션 일시정지
-        enemyAnimation.SetHitStop(true);
-
-        spriteRenderer.color = Color.red;
-
-        yield return new WaitForSeconds(hitStopTime);
-
-        spriteRenderer.color = originalColor;
-        isHit = false;
-
-        // 애니메이션 재생
-        enemyAnimation.SetHitStop(false);
-    }
-
-    void Die()
-    {
-        GameManager.Instance.AddScore(1); // 점수 증가
-        playerStats.AddExp(expReward); // 경험치 반환
-
-        // 사망 시 비활성화
-        gameObject.SetActive(false);
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        // 플레이어인 경우만 허용
-        if (!collision.gameObject.CompareTag("Player"))
-            return;
-
-        // 공격 쿨타임
-        if (Time.time < lastAttackTime + attackCooldown)
-            return;
-
-        Player playerCS = collision.gameObject.GetComponent<Player>();
-
-        if(playerCS != null)
-        {
-            playerCS.TakeDamage(attackDamage);
-
-            lastAttackTime = Time.time;
-        }
-    }
-
-    void UpdateHealthBar()
-    {
-        if(currentHealth == maxHealth)
-        {
-            healthBar.gameObject.SetActive(false); // 체력바 비활성화
-        }
-        else
-        {
-            healthBar.gameObject.SetActive(true); // 체력바 활성화
-        }
-
-        if (healthBar != null)
-        {
-            healthBar.value = currentHealth / maxHealth; // 체력 비율 계산
-        }
-    }
-
-    
-    // PlayerStats과 연결
-    void ConnectPlayerStats(){
-        
-        if(playerStats != null)
-            return;
-
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        playerStats = player.GetComponent<PlayerStats>();
+        if (Time.time < lastAttackTime + attackCooldown) return;
+        Player player = collision.collider.GetComponentInParent<Player>();
+        if (player == null) return;
+        player.TakeDamage(attackDamage);
+        lastAttackTime = Time.time;
     }
 }
