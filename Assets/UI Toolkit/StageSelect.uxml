@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/StageButton.uss?fileID=7433441132597879392&amp;guid=b5ea25ce06529134a8b39dab360dd829&amp;type=3#StageButton"/>
+    <ui:VisualElement style="flex-grow: 1;">
+        <ui:VisualElement name="MainContainer" style="flex-grow: 1;">
+            <ui:Label text="Stage Select" name="TitleLabel" style="-unity-text-align: upper-center; font-size: 30px; color: rgb(255, 215, 0);"/>
+            <ui:VisualElement name="StagePath" tooltip="" style="flex-grow: 0.2; width: 431px; height: 0; flex-direction: row; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; bottom: auto; top: auto; -unity-text-align: upper-left; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px;">
+                <ui:Button text="Button" name="Stage01" class="stage-button" style="top: auto; flex-basis: auto; flex-shrink: 0; flex-grow: 0; justify-content: flex-start; width: 60px; -unity-text-outline-width: 0; height: 60px; margin-right: 10px; margin-left: 10px;"/>
+                <ui:Button text="Button" name="Stage02" class="stage-button" style="margin-left: 10px; margin-right: 10px;"/>
+                <ui:Button text="Button" name="Stage03" class="stage-button" style="margin-left: 10px; margin-right: 10px;"/>
+            </ui:VisualElement>
+            <ui:VisualElement name="StageInfoPanel" style="flex-grow: 1; left: auto; top: auto; translate: 0 0; flex-shrink: 1; width: 95%; height: 0; flex-direction: column; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; position: relative; right: auto; bottom: auto; background-color: rgb(37, 53, 82);">
+                <ui:Label text="Stage 00 - Load" name="StageNameLabel" style="-unity-font-style: bold; font-size: 20px; color: rgb(255, 255, 255);"/>
+                <ui:Label text="Description" name="StageDescriptionLabel" style="color: rgb(192, 192, 192);"/>
+                <ui:Label text="Enemies" name="StageEnemiesLabel" style="color: rgb(192, 192, 192);"/>
+                <ui:Label text="300G" name="StageRewardLabel" style="color: rgb(255, 223, 0);"/>
+                <ui:Button text="Enter Stage" name="EnterButton" style="background-color: rgb(248, 210, 7);"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
