@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
         explosionTargets.Clear();
         explosionColliders.Clear();
         Physics2D.OverlapCircle(position, explosionRadius,
-            new ContactFilter2D().NoFilter(), explosionColliders);
+            ContactFilter2D.noFilter, explosionColliders);
         foreach (Collider2D hit in explosionColliders)
         {
             if (hit == null) continue;

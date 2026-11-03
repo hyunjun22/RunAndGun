@@ -1,101 +1,112 @@
 using UnityEngine;
-using UnityEngine.UIElements;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageSelectUI : MonoBehaviour
 {
-    [SerializeField] StageData stage01;
+    [Header("Stage Data")]
+    [SerializeField] StageData[] stages;
 
-    StageData selectedStage;
+    [Header("Stage Buttons")]
+    [SerializeField] Transform stageButtonContainer;
+    [SerializeField] Button stageButtonPrefab;
 
-    Button stage01Button;
-    Button enterButton;
+    [Header("Stage Info Panel")]
+    [SerializeField] GameObject stageInfoPanel;
+    [SerializeField] Text stageNameText;
+    [SerializeField] Text descriptionText;
+    [SerializeField] Text rewardGoldText;
 
-    VisualElement infoPanel;
+    [Header("Enemy List")]
+    [SerializeField] Transform enemyListContent;
+    [SerializeField] Text enemyInfoTextPrefab;
 
-    Label stageNameLabel;
-    Label descriptionLabel;
-    Label enemiesLabel;
-    Label rewardLabel;
+    private StageData selectedStage;
 
-    void OnEnable()
+
+    void Start()
     {
-        VisualElement root =
-            GetComponent<UIDocument>().rootVisualElement;
+        stageInfoPanel.SetActive(false);
 
-        stage01Button = root.Q<Button>("Stage01Button");
-        enterButton = root.Q<Button>("EnterButton");
-
-        infoPanel = root.Q<VisualElement>("StageInfoPanel");
-
-        stageNameLabel = root.Q<Label>("StageNameLabel");
-        descriptionLabel = root.Q<Label>("StageDescriptionLabel");
-        enemiesLabel = root.Q<Label>("StageEnemiesLabel");
-        rewardLabel = root.Q<Label>("StageRewardLabel");
-
-        if (stage01Button == null ||
-            enterButton == null ||
-            infoPanel == null ||
-            stageNameLabel == null ||
-            descriptionLabel == null ||
-            enemiesLabel == null ||
-            rewardLabel == null)
-        {
-            Debug.LogError("UI Builder의 Name을 확인하세요.");
-            return;
-        }
-
-        infoPanel.style.display = DisplayStyle.None;
-
-        stage01Button.clicked += SelectStage01;
-        enterButton.clicked += EnterStage;
+        CreateStageButtons();
     }
 
-    void OnDisable()
+    void CreateStageButtons()
     {
-        if (stage01Button != null)
-            stage01Button.clicked -= SelectStage01;
+        for(int i = 0; i < stages.Length; i++)
+        {
+            StageData stage = stages[i];
 
-        if (enterButton != null)
-            enterButton.clicked -= EnterStage;
+            if (stage == null)
+                return;
+
+            Button button = Instantiate(stageButtonPrefab, stageButtonContainer);
+
+            Text buttonText = button.GetComponentInChildren<Text>();
+
+            if (buttonText != null || buttonText.text != stage.stageName)
+                buttonText.text = "stage" + (i+1).ToString();
+
+            // 버튼 클릭 이벤트 연결
+            button.onClick.AddListener(() => SelectStage(stage));
+        }
     }
 
-    void SelectStage01()
+    // 스테이지 선택
+    void SelectStage(StageData stage)
     {
-        if (stage01 == null)
+        selectedStage = stage;
+
+        stageNameText.text = stage.stageName;
+        descriptionText.text = stage.description;
+        rewardGoldText.text = $"{stage.rewardGold} G";
+
+        UpdateEnemyList();
+
+        stageInfoPanel.SetActive(true);
+    }
+
+    // 몬스터 정보 목록 생성
+    void UpdateEnemyList()
+    {
+        // 기존 Text 제거
+        foreach (Transform child in enemyListContent)
         {
-            Debug.LogError("Stage01.asset이 연결되지 않았습니다.");
-            return;
+            child.gameObject.SetActive(false);
+            Destroy(child.gameObject);
         }
 
-        selectedStage = stage01;
+        if (selectedStage.spawnRules == null)
+            return;
 
-        stageNameLabel.text = selectedStage.stageName;
-        descriptionLabel.text = selectedStage.description;
-
-        rewardLabel.text =
-            $"보상: {selectedStage.rewardGold}G";
-
-        string enemyInfo = "";
-
+        // SpawnRule 개수만큼 Text 생성
         foreach (SpawnRule rule in selectedStage.spawnRules)
         {
-            enemyInfo += $"{rule.enemyType} {rule.count}마리\n";
+            Text newText = Instantiate(enemyInfoTextPrefab, enemyListContent);
+
+            string enemyName = rule.enemyType switch
+            {
+                EnemyType.Zombie => "좀비",
+                EnemyType.Skeleton => "스켈레톤",
+                _ => rule.enemyType.ToString()
+            };
+
+            newText.text = $"{enemyName} {rule.count}마리";
         }
-
-        enemiesLabel.text = enemyInfo;
-
-        infoPanel.style.display = DisplayStyle.Flex;
     }
 
-    void EnterStage()
+    public void CloseStageInfo()
     {
-        if (selectedStage == null) return;
+        stageInfoPanel.SetActive(false);
+    }
 
-        StageSession.SelectedStage = selectedStage;
+    // 스테이지 입장
+    public void EnterStage()
+    {
+        if (selectedStage == null)
+            return;
 
-        Time.timeScale = 1f;
+        Debug.Log($"{selectedStage.stageName} 입장!");
 
-        SceneManager.LoadScene("SampleScene");
+        // 추후 StageManager와 연결
     }
 }
