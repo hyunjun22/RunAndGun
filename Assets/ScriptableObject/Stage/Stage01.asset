@@ -20,8 +20,8 @@ MonoBehaviour:
   - enemyType: 0
     count: 30
     startDelay: 1
-    interval: 1
+    interval: 2
   - enemyType: 1
     count: 10
     startDelay: 10
-    interval: 1
+    interval: 3

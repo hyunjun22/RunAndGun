@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class StageSelectUI : MonoBehaviour
 {
@@ -37,13 +38,13 @@ public class StageSelectUI : MonoBehaviour
             StageData stage = stages[i];
 
             if (stage == null)
-                return;
+                continue;
 
             Button button = Instantiate(stageButtonPrefab, stageButtonContainer);
 
             Text buttonText = button.GetComponentInChildren<Text>();
 
-            if (buttonText != null || buttonText.text != stage.stageName)
+            if (buttonText != null)
                 buttonText.text = "stage" + (i+1).ToString();
 
             // 버튼 클릭 이벤트 연결
@@ -78,19 +79,32 @@ public class StageSelectUI : MonoBehaviour
         if (selectedStage.spawnRules == null)
             return;
 
-        // SpawnRule 개수만큼 Text 생성
+        Dictionary<EnemyType, int> enemyCounts = new();
+        
         foreach (SpawnRule rule in selectedStage.spawnRules)
+        {
+            if (enemyCounts.ContainsKey(rule.enemyType))
+            {
+                enemyCounts[rule.enemyType] += rule.count;
+            }
+            else
+            {
+                enemyCounts[rule.enemyType] = rule.count;
+            }
+        }
+
+        foreach (var enemy in enemyCounts)
         {
             Text newText = Instantiate(enemyInfoTextPrefab, enemyListContent);
 
-            string enemyName = rule.enemyType switch
+            string enemyName = enemy.Key switch
             {
                 EnemyType.Zombie => "좀비",
                 EnemyType.Skeleton => "스켈레톤",
-                _ => rule.enemyType.ToString()
+                _ => enemy.Key.ToString()
             };
 
-            newText.text = $"{enemyName} {rule.count}마리";
+            newText.text = $"{enemyName} {enemy.Value}마리";
         }
     }
 

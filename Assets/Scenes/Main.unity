@@ -360,6 +360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageSelectUI
   stages:
   - {fileID: 11400000, guid: 8f8009923184c544fbbefd1d69a97da6, type: 2}
+  - {fileID: 11400000, guid: 701fab2426a43664192b1edfd24ad2ec, type: 2}
   stageButtonContainer: {fileID: 1421467660}
   stageButtonPrefab: {fileID: 4595992071435972573, guid: 687e1400c16359d4f96db81b6e2169a9, type: 3}
   stageInfoPanel: {fileID: 1142903384}
