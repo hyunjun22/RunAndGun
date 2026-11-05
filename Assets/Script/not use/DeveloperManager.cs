@@ -51,11 +51,13 @@ public class DeveloperManager : MonoBehaviour
         timeScaleValueText.text = Time.timeScale.ToString("F2");
         timeScaleSlider.onValueChanged.AddListener(SetTimeScale);
 
+        /*
         // experience
         experiencePlusButton.onClick.AddListener(() =>
         {
             playerStats.AddExp(100f);
         });
+        */
 
         // levelUp
         levelUpButton.onClick.AddListener(() =>

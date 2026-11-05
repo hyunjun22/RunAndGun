@@ -62,7 +62,7 @@ public class ObjectPoolingManager : MonoBehaviour
             }
         }
 
-        return null;
+        return GetAvailable(zombiePrefab, zombiePoolList); ;
     }
 
     public GameObject GetBullet()
@@ -112,9 +112,15 @@ public class ObjectPoolingManager : MonoBehaviour
 
     GameObject GetAvailable(GameObject prefab, List<GameObject> list)
     {
-        if (prefab == null) return null;
-        foreach (GameObject obj in list) if (!obj.activeSelf) return obj;
-        GameObject created = CreatePooled(prefab);
+        if (prefab == null)
+            return null;
+
+        foreach (GameObject obj in list)
+        {
+            if (!obj.activeSelf)
+                return obj;
+        }
+            GameObject created = CreatePooled(prefab);
         list.Add(created);
         return created;
     }

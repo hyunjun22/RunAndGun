@@ -11,7 +11,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float hitStopTime = 0.2f;
     [SerializeField] protected float attackDamage = 10f;
     [SerializeField] protected float attackCooldown = 1f;
-    [SerializeField] protected float expReward = 20f;
     [SerializeField] protected Slider healthBar;
     protected float currentHealth;
     protected float lastAttackTime;
@@ -94,8 +93,6 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
-        if (GameManager.Instance != null) GameManager.Instance.AddScore(1);
-        if (playerStats != null) playerStats.AddExp(expReward);
         gameObject.SetActive(false);
     }
 

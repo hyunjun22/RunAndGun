@@ -45,7 +45,7 @@ public class PlayerUI : MonoBehaviour
     }
 
     public void UpdateExpBar(){
-        expBar.value = playerStats.CurrentExp / playerStats.RequiredExp;
+        // expBar.value = playerStats.CurrentExp / playerStats.RequiredExp;
     }
 
     public void UpdateSetText(StatTextType type = StatTextType.All)
