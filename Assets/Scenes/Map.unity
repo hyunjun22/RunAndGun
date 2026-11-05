@@ -498,9 +498,6 @@ MonoBehaviour:
   pierceCount: 0
   projectileCount: 1
   explosionDamage: 0
-  level: 1
-  currentExp: 0
-  requiredExp: 100
 --- !u!114 &532548991
 MonoBehaviour:
   m_ObjectHideFlags: 0
