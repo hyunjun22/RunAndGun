@@ -11,7 +11,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField] protected float hitStopTime = 0.2f;
     [SerializeField] protected float attackDamage = 10f;
     [SerializeField] protected float attackCooldown = 1f;
-    [SerializeField] protected float expReward = 20f;
     [SerializeField] protected Slider healthBar;
     protected float currentHealth;
     protected float lastAttackTime;
@@ -25,6 +24,8 @@ public abstract class Enemy : MonoBehaviour
     Coroutine hitRoutine;
 
     public float CurrentHealth => currentHealth;
+
+    public event System.Action<Enemy> Died;
 
     protected virtual void Awake()
     {
@@ -94,8 +95,8 @@ public abstract class Enemy : MonoBehaviour
 
     protected virtual void Die()
     {
-        if (GameManager.Instance != null) GameManager.Instance.AddScore(1);
-        if (playerStats != null) playerStats.AddExp(expReward);
+        Died?.Invoke(this);
+
         gameObject.SetActive(false);
     }
 

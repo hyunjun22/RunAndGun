@@ -1,20 +1,18 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private TMP_Text timeText;
-    [SerializeField] TMP_Text scoreText;
+    [SerializeField] private Text timeText;
     [SerializeField] GameObject pausePanel;
     [SerializeField] GameObject gameOverText;
 
 
     float gameTime = 0f;
-    int score = 0;
     bool isPaused = false;
 
 
@@ -39,7 +37,6 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         UpdateTimeText();
-        UpdateScoreText();
         ClickKeyboard();
     }
 
@@ -49,17 +46,7 @@ public class GameManager : MonoBehaviour
 
         gameTime += Time.deltaTime;
 
-        timeText.text = "Time : " + gameTime.ToString("F2");
-    }
-
-    void UpdateScoreText()
-    {
-        scoreText.text = "Score : " + score.ToString();
-    }
-
-    public void AddScore(int amount)
-    {
-        score += amount;
+        timeText.text = gameTime.ToString("F2");
     }
 
     // 버튼에 연결할 함수

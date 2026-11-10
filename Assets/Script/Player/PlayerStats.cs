@@ -45,14 +45,6 @@ public class PlayerStats : MonoBehaviour
         pierceCount = Mathf.Max(0, pierceCount + amount);
     }
 
-    [Header("Level")]
-    [SerializeField] int level = 1;
-    [SerializeField] float currentExp = 0f;
-    [SerializeField] float requiredExp = 100f;
-
-    public float CurrentExp => currentExp;
-    public float RequiredExp => requiredExp;
-
     public void TakeDamage(float amount)
     {
         // 체력 감소 (수치는 여기서)
@@ -102,27 +94,5 @@ public class PlayerStats : MonoBehaviour
         }
 
         currentHealth += amount;
-    }
-
-    public void AddExp(float amount){
-        currentExp += amount;
-        
-        playerUI.UpdateExpBar();
-
-        if(currentExp >= requiredExp){
-            LevelUp();
-        }
-    }
-
-    void LevelUp(){
-        currentExp -= requiredExp;
-
-        level++;
-
-        requiredExp *= 1.2f;
-
-        playerUI.UpdateExpBar();
-
-        playerUI.ShowLevelUp(); // 레벨업 패널 보여주기
     }
 }

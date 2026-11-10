@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class StageSelectUI : MonoBehaviour
 {
@@ -119,8 +120,10 @@ public class StageSelectUI : MonoBehaviour
         if (selectedStage == null)
             return;
 
-        Debug.Log($"{selectedStage.stageName} 입장!");
+        StageSession.SelectedStage = selectedStage;
 
-        // 추후 StageManager와 연결
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene("BattleMap");
     }
 }

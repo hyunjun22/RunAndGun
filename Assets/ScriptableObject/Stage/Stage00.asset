@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 719efbecab75b424a9b9d9e96cd3c000, type: 3}
+  m_Name: Stage00
+  m_EditorClassIdentifier: Assembly-CSharp::StageData
+  stageId: 0
+  stageName: "\uD29C\uD1A0\uB9AC\uC5BC"
+  description: "\uD29C\uD1A0\uB9AC\uC5BC\n"
+  rewardGold: 300
+  spawnRules:
+  - enemyType: 0
+    count: 5
+    startDelay: 0
+    interval: 1
