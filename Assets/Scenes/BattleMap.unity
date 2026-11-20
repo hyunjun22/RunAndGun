@@ -60400,6 +60400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
   playerUI: {fileID: 1608817756}
+  baseStats: {fileID: 11400000, guid: af6601e3267dec14ca79598b562bdca1, type: 2}
   maxHealth: 100
   currentHealth: 100
   moveSpeed: 5

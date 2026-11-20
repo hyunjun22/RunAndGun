@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4374a9db52d1ace48832186d154326a1, type: 3}
+  m_Name: Damage
+  m_EditorClassIdentifier: Assembly-CSharp::StoreUpgradeData
+  id: store.damage
+  upgradeName: "\uCD1D\uC54C \uB370\uBBF8\uC9C0 \uC99D\uAC00"
+  description: "\uC804\uD22C \uC2DC\uC791 \uC2DC \uCD1D\uC54C \uB370\uBBF8\uC9C0\uAC00 {Value} \uC99D\uAC00\uD569\uB2C8\uB2E4. \uBC18\uBCF5 \uAD6C\uB9E4\uD558\uBA74 \uD6A8\uACFC\uAC00 \uB204\uC801\uB429\uB2C8\uB2E4."
+  type: 0
+  increasePerLevel: 10
+  cost: 100

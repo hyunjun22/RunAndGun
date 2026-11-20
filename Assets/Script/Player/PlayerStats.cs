@@ -3,6 +3,15 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     [SerializeField] PlayerUI playerUI;
+    [SerializeField] PlayerBaseStats baseStats;
+
+    void Awake()
+    {
+        if (baseStats == null) return;
+        damage = baseStats.GetStat(UpgradeType.Damage);
+        attackSpeed = baseStats.GetStat(UpgradeType.AttackSpeed);
+        moveSpeed = baseStats.GetStat(UpgradeType.MoveSpeed);
+    }
 
     [Header("Health")]
     [SerializeField] float maxHealth = 100f;
@@ -22,9 +31,9 @@ public class PlayerStats : MonoBehaviour
 
     public float MaxHealth => maxHealth;
     public float CurrentHealth => currentHealth;
-    public float MoveSpeed => moveSpeed;
-    public float Damage => damage;
-    public float AttackSpeed => attackSpeed;
+    public float MoveSpeed => moveSpeed + GameProgress.GetStatBonus(UpgradeType.MoveSpeed);
+    public float Damage => damage + GameProgress.GetStatBonus(UpgradeType.Damage);
+    public float AttackSpeed => attackSpeed + GameProgress.GetStatBonus(UpgradeType.AttackSpeed);
     public float BulletSpeed => bulletSpeed;
     public int PierceCount => pierceCount;
     public int ProjectileCount => Mathf.Max(1, projectileCount);

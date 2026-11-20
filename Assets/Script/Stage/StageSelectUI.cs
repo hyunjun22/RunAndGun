@@ -21,11 +21,30 @@ public class StageSelectUI : MonoBehaviour
     [Header("Store")]
     [SerializeField] GameObject storePanel;
 
+    [Header("Gold")]
+    [SerializeField] Text goldText;
+
     [Header("Enemy List")]
     [SerializeField] Transform enemyListContent;
     [SerializeField] Text enemyInfoTextPrefab;
 
     private StageData selectedStage;
+
+    void OnEnable()
+    {
+        GameProgress.GoldChanged += UpdateGoldText;
+        UpdateGoldText(GameProgress.Gold);
+    }
+
+    void OnDisable()
+    {
+        GameProgress.GoldChanged -= UpdateGoldText;
+    }
+
+    void UpdateGoldText(int amount)
+    {
+        if (goldText != null) goldText.text = $"{amount:N0} G";
+    }
 
 
     void Start()
@@ -39,6 +58,11 @@ public class StageSelectUI : MonoBehaviour
     public void OpenStore()
     {
         if (storePanel != null) storePanel.SetActive(true);
+    }
+
+    public void CloseStore()
+    {
+        if (storePanel != null) storePanel.SetActive(false);
     }
 
     void CreateStageButtons()
@@ -65,6 +89,7 @@ public class StageSelectUI : MonoBehaviour
     // 스테이지 선택
     void SelectStage(StageData stage)
     {
+        CloseStore();
         selectedStage = stage;
 
         stageNameText.text = stage.stageName;
