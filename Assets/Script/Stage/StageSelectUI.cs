@@ -18,6 +18,9 @@ public class StageSelectUI : MonoBehaviour
     [SerializeField] Text descriptionText;
     [SerializeField] Text rewardGoldText;
 
+    [Header("Store")]
+    [SerializeField] GameObject storePanel;
+
     [Header("Enemy List")]
     [SerializeField] Transform enemyListContent;
     [SerializeField] Text enemyInfoTextPrefab;
@@ -28,8 +31,14 @@ public class StageSelectUI : MonoBehaviour
     void Start()
     {
         stageInfoPanel.SetActive(false);
+        if (storePanel != null) storePanel.SetActive(false);
 
         CreateStageButtons();
+    }
+
+    public void OpenStore()
+    {
+        if (storePanel != null) storePanel.SetActive(true);
     }
 
     void CreateStageButtons()
