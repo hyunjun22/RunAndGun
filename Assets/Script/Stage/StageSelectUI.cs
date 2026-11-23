@@ -9,7 +9,7 @@ public class StageSelectUI : MonoBehaviour
     [SerializeField] StageData[] stages;
 
     [Header("Stage Buttons")]
-    [SerializeField] Transform stageButtonContainer;
+    [SerializeField] RectTransform stageButtonContainer;
     [SerializeField] Button stageButtonPrefab;
 
     [Header("Stage Info Panel")]
@@ -29,6 +29,7 @@ public class StageSelectUI : MonoBehaviour
     [SerializeField] Text enemyInfoTextPrefab;
 
     private StageData selectedStage;
+    readonly List<(RectTransform From, RectTransform To, RectTransform Line)> stageConnections = new();
 
     void OnEnable()
     {
@@ -67,22 +68,56 @@ public class StageSelectUI : MonoBehaviour
 
     void CreateStageButtons()
     {
-        for(int i = 0; i < stages.Length; i++)
+        RectTransform previousButton = null;
+        foreach (StageData stage in stages)
         {
-            StageData stage = stages[i];
-
             if (stage == null)
                 continue;
 
             Button button = Instantiate(stageButtonPrefab, stageButtonContainer);
-
             Text buttonText = button.GetComponentInChildren<Text>();
 
             if (buttonText != null)
-                buttonText.text = "stage" + (i+1).ToString();
+                buttonText.text = string.IsNullOrWhiteSpace(stage.buttonLabel) ? stage.stageName : stage.buttonLabel;
 
-            // 버튼 클릭 이벤트 연결
             button.onClick.AddListener(() => SelectStage(stage));
+
+            var buttonRect = (RectTransform)button.transform;
+            if (previousButton != null)
+                AddStageConnection(previousButton, buttonRect);
+
+            previousButton = buttonRect;
+        }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(stageButtonContainer);
+    }
+
+    void AddStageConnection(RectTransform from, RectTransform to)
+    {
+        var lineObject = new GameObject("StageConnection", typeof(RectTransform),
+            typeof(UnityEngine.UI.Image), typeof(LayoutElement));
+        var line = (RectTransform)lineObject.transform;
+        line.SetParent(stageButtonContainer, false);
+        line.sizeDelta = Vector2.zero;
+        line.SetAsFirstSibling();
+        lineObject.GetComponent<LayoutElement>().ignoreLayout = true;
+
+        var image = lineObject.GetComponent<UnityEngine.UI.Image>();
+        image.color = new Color(0.8f, 0.8f, 0.8f);
+        image.raycastTarget = false;
+        stageConnections.Add((from, to, line));
+    }
+
+    void LateUpdate()
+    {
+        foreach (var (from, to, line) in stageConnections)
+        {
+            Vector2 start = stageButtonContainer.InverseTransformPoint(from.TransformPoint(from.rect.center));
+            Vector2 end = stageButtonContainer.InverseTransformPoint(to.TransformPoint(to.rect.center));
+            Vector2 delta = end - start;
+            line.localPosition = (start + end) * 0.5f;
+            line.localRotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg);
+            line.sizeDelta = new Vector2(delta.magnitude, 5f);
         }
     }
 

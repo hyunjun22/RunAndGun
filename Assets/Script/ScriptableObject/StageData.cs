@@ -22,6 +22,9 @@ public class StageData : ScriptableObject
     public int stageId;
     public string stageName;
 
+    [Tooltip("스테이지 선택 버튼에 표시할 이름입니다. 비워 두면 Stage Name을 사용합니다.")]
+    public string buttonLabel;
+
     [TextArea]
     public string description;
 

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StageData
   stageId: 0
   stageName: "\uC8FC\uC720\uC18C"
+  buttonLabel: "2"
   description: "\uB450\uBC88\uC9F8 \uC2A4\uD14C\uC774\uC9C0"
   rewardGold: 500
   spawnRules:
