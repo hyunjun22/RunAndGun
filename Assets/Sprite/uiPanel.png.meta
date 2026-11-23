@@ -1,0 +1,375 @@
+fileFormatVersion: 2
+guid: 9d1b43fc2ee871d4188a73d25a987519
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5419318661129353596
+    second: uiPanel_0
+  - first:
+      213: -8008865389096644916
+    second: uiPanel_1
+  - first:
+      213: -8629518914357290534
+    second: uiPanel_2
+  - first:
+      213: 3206423217036924939
+    second: uiPanel_3
+  - first:
+      213: -8079515460946259952
+    second: uiPanel_4
+  - first:
+      213: 7621852768439082456
+    second: uiPanel_5
+  - first:
+      213: 8181660170256088580
+    second: uiPanel_6
+  - first:
+      213: 2065809100016907711
+    second: uiPanel_7
+  - first:
+      213: 6728828785309068965
+    second: uiPanel_8
+  - first:
+      213: -5667348332166565863
+    second: uiPanel_9
+  - first:
+      213: -4701372806237678592
+    second: uiPanel_10
+  - first:
+      213: 3010575726941198645
+    second: uiPanel_11
+  - first:
+      213: -289758111124134777
+    second: uiPanel_12
+  - first:
+      213: -7895569537189385891
+    second: uiPanel_13
+  - first:
+      213: -4844887625184539598
+    second: uiPanel_14
+  - first:
+      213: 2245687518567631471
+    second: uiPanel_15
+  - first:
+      213: 8235418178072707734
+    second: uiPanel_16
+  - first:
+      213: -6086821630573368892
+    second: uiPanel_17
+  - first:
+      213: -8922595470975151931
+    second: uiPanel_18
+  - first:
+      213: -8516864194501312259
+    second: uiPanel_19
+  - first:
+      213: -4913375723202324869
+    second: uiPanel_20
+  - first:
+      213: 6889240703318535162
+    second: uiPanel_21
+  - first:
+      213: -5843386779119330329
+    second: uiPanel_22
+  - first:
+      213: -6655373898044820027
+    second: uiPanel_23
+  - first:
+      213: 2100454579251694227
+    second: uiPanel_24
+  - first:
+      213: 6075785292517548381
+    second: uiPanel_25
+  - first:
+      213: -6840578169853198907
+    second: uiPanel_26
+  - first:
+      213: 7110237557809690056
+    second: uiPanel_27
+  - first:
+      213: 1131123875490297177
+    second: uiPanel_28
+  - first:
+      213: 5377877685304698868
+    second: uiPanel_29
+  - first:
+      213: 2583815999565888392
+    second: uiPanel_30
+  - first:
+      213: -6521394450999869510
+    second: uiPanel_31
+  - first:
+      213: -4409897837647428860
+    second: uiPanel_32
+  - first:
+      213: -2529758563081442970
+    second: uiPanel_33
+  - first:
+      213: 7353148821932691062
+    second: uiPanel_34
+  - first:
+      213: 3064793070443380908
+    second: uiPanel_35
+  - first:
+      213: -8585587278917644732
+    second: uiPanel_36
+  - first:
+      213: -7422113919433658127
+    second: uiPanel_37
+  - first:
+      213: 2841457721206045993
+    second: uiPanel_38
+  - first:
+      213: -1137498249245958151
+    second: uiPanel_39
+  - first:
+      213: 8153309794996633944
+    second: uiPanel_40
+  - first:
+      213: -5260388291052868244
+    second: uiPanel_41
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationMethod: 0
+  spriteTessellationDetail: -1
+  spriteGeometrySubdivision: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: uiPanel_0
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 97
+        width: 549
+        height: 847
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4864db6f366bac4b0800000000000000
+      internalID: -5419318661129353596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiPanel_1
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 610
+        width: 864
+        height: 209
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8264b47c7f3dcfb4a829783a2c25b105
+      internalID: -8008865389096644916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiPanel_2
+      rect:
+        serializedVersion: 2
+        x: 649
+        y: 115
+        width: 427
+        height: 424
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b7caabddd467604998d29cf4a34c6e0
+      internalID: -8629518914357290534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uiPanel_3
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 138
+        width: 360
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fcbcdc56621e7a4386f6ea79e831b22
+      internalID: 3206423217036924939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: af7bcc4dbe2f80c4fbf979ff79859602
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      uiPanel_0: -5419318661129353596
+      uiPanel_1: -8008865389096644916
+      uiPanel_10: -4701372806237678592
+      uiPanel_11: 3010575726941198645
+      uiPanel_12: -289758111124134777
+      uiPanel_13: -7895569537189385891
+      uiPanel_14: -4844887625184539598
+      uiPanel_15: 2245687518567631471
+      uiPanel_16: 8235418178072707734
+      uiPanel_17: -6086821630573368892
+      uiPanel_18: -8922595470975151931
+      uiPanel_19: -8516864194501312259
+      uiPanel_2: -8629518914357290534
+      uiPanel_20: -4913375723202324869
+      uiPanel_21: 6889240703318535162
+      uiPanel_22: -5843386779119330329
+      uiPanel_23: -6655373898044820027
+      uiPanel_24: 2100454579251694227
+      uiPanel_25: 6075785292517548381
+      uiPanel_26: -6840578169853198907
+      uiPanel_27: 7110237557809690056
+      uiPanel_28: 1131123875490297177
+      uiPanel_29: 5377877685304698868
+      uiPanel_3: 3206423217036924939
+      uiPanel_30: 2583815999565888392
+      uiPanel_31: -6521394450999869510
+      uiPanel_32: -4409897837647428860
+      uiPanel_33: -2529758563081442970
+      uiPanel_34: 7353148821932691062
+      uiPanel_35: 3064793070443380908
+      uiPanel_36: -8585587278917644732
+      uiPanel_37: -7422113919433658127
+      uiPanel_38: 2841457721206045993
+      uiPanel_39: -1137498249245958151
+      uiPanel_4: -8079515460946259952
+      uiPanel_40: 8153309794996633944
+      uiPanel_41: -5260388291052868244
+      uiPanel_5: 7621852768439082456
+      uiPanel_6: 8181660170256088580
+      uiPanel_7: 2065809100016907711
+      uiPanel_8: 6728828785309068965
+      uiPanel_9: -5667348332166565863
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
