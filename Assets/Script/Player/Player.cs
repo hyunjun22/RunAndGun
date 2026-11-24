@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     [SerializeField] float damageSpeed = 0.4f;
     private Coroutine damageRoutine;
 
+    [Header("State UI")]
+    [SerializeField] Text damageText;
+    [SerializeField] Text attackSpeedText;
+    [SerializeField] Text moveSpeedText;
+
     private Vector2 MovementInput;
     private Rigidbody2D rg;
     private SpriteRenderer spriteRenderer;
@@ -32,6 +37,11 @@ public class Player : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         originalColor = spriteRenderer.color;
         animator = GetComponent<Animator>();
+    }
+
+    private void Start()
+    {
+        SetStateUI();
     }
 
     void OnEnable()
@@ -147,4 +157,10 @@ public class Player : MonoBehaviour
         damageRoutine = null;
     }
 
+    void SetStateUI()
+    {
+        damageText.text = playerStats.Damage.ToString();
+        attackSpeedText.text = playerStats.AttackSpeed.ToString("F2");
+        moveSpeedText.text = playerStats.MoveSpeed.ToString();
+    }
 }
