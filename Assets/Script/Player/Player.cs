@@ -10,6 +10,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] float changeColorDelay = 0.1f;
 
+    [Header("HP")]
+    [SerializeField] Slider healthBar;
+    [SerializeField] Slider damageBar;
+    [SerializeField] float damageDelay = 0.5f;
+    [SerializeField] float damageSpeed = 0.4f;
+    private Coroutine damageRoutine;
 
     private Vector2 MovementInput;
     private Rigidbody2D rg;
@@ -31,7 +37,7 @@ public class Player : MonoBehaviour
     void OnEnable()
     {
         playerStats.RestartHealth();
-        playerUI.UpdateHealthBar();
+        UpdateHPSlider();
     }
 
     void FixedUpdate()
@@ -79,7 +85,7 @@ public class Player : MonoBehaviour
             return;
 
         playerStats.TakeDamage(damage);
-        playerUI.UpdateHealthBar();
+        UpdateHPSlider();
 
         StartCoroutine(HitEffect());
 
@@ -105,9 +111,40 @@ public class Player : MonoBehaviour
         spriteRenderer.color = originalColor;
     }
 
-    public void Recover(float amount)
+    void UpdateHPSlider()
     {
-        
+        float ratio = playerStats.CurrentHealth / playerStats.MaxHealth;
+
+        healthBar.value = ratio;
+
+        if (damageRoutine != null)
+            StopCoroutine(DamageEffect());
+
+        // 체력 회복 처리
+        if (damageBar.value <= ratio)
+        {
+            damageBar.value = ratio;
+            damageRoutine = null;
+            return;
+        }
+
+        damageRoutine = StartCoroutine(DamageEffect());
+    }
+
+    IEnumerator DamageEffect()
+    {
+        yield return new WaitForSeconds(damageDelay);
+
+        Debug.Log("DamageEffect play");
+
+        while (damageBar.value > healthBar.value)
+        {
+            damageBar.value = Mathf.MoveTowards(damageBar.value, healthBar.value, damageSpeed * Time.deltaTime);
+
+            yield return null;
+        }
+
+        damageRoutine = null;
     }
 
 }
